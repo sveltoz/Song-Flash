@@ -8,6 +8,7 @@ Description: This is Artist selection application. In this application user can 
 Requirements:
 1.Nodejs
 
+
 Steps for SongFlash Application
 1. Run "npm install tsd -g".
 2.Run "tsd install angular2/angular2 angular2/router rx es6-promise"(if you not found any angualr 2 folder on your typing folder then add manually angular2 folder from typings.zip.
