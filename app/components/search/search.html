@@ -1,0 +1,74 @@
+<div class="">
+	<div class="row">
+	<svg viewBox="1000 0 1000 300">
+    <symbol id="s-text">
+		<text text-anchor="middle" x="50%" y="80%">Song Flash </text>
+	</symbol>
+
+	<g class = "g-ants">
+		<use xlink:href="#s-text" class="text-copy"></use>
+		<use xlink:href="#s-text" class="text-copy"></use>
+		<use xlink:href="#s-text" class="text-copy"></use>
+		<use xlink:href="#s-text" class="text-copy"></use>
+		<use xlink:href="#s-text" class="text-copy"></use>
+	</g>
+</svg>
+	</div>
+</div>
+
+<div id="wrap">
+  <form action="" autocomplete="on">
+  <input id="search" type="text" placeholder="search music" name="searchStr" (keyup)="searchMusic()" [(ngModel)]="searchStr"><input id="search_submit" value="Rechercher" type="submit">
+  </form>
+</div>
+
+<div *ngIf="SearchRes">
+  <div *ngFor="let res of SearchRes">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="search-res well">
+          <a (click)='goToArtist(res)' >
+            <h4>{{res.name}}</h4>
+          </a>
+          <div>
+            <strong>genre:</strong>
+            <span *ngFor="let genre of res.genres">
+              <span>{{genre}}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<div>
+  <a (OnInit)='goArtist()'>
+    <h4></h4>
+  </a>
+<div *ngIf="artist">
+  <header class="artist-header">
+    <div *ngIf="artist.images.length > 0">
+      <img src="{{artist.images[0].url}}" alt="{{artist.name}}" class="artist-thumb img-circle">
+      <h1>
+        {{artist.name}}
+      </h1>
+        <p *ngIf="artist.genres.length > 0">Genres: <span *ngFor="let genre of artist.genres">{{genre}}</span></p>
+    </div>
+  </header>
+ <div class="artist-albums">
+    <div class="flex">
+        <div *ngFor="let album of albums" class="flex-item well album">
+          <div class=" ">
+            <div *ngIf="album.images.length > 0">
+            <img src="{{album.images[0].url}}" alt="{{album.name}}" class="album-thumb img-thumbnail">
+            </div>
+            <h4>{{album.name}}</h4>
+            <a [routerLink]="['/album', album.id]" class="btn btn-default btn-block">Artist List</a>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+</div>
